@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             mc:Ignorable="d"
+             xmlns:progressBar="clr-namespace:ProgressBar"
+             xmlns:tt="clr-namespace:TouchTracking"
+             x:Class="App3.Views.TestPage"
+             xmlns:vm="clr-namespace:App3.ViewModels"
+             xmlns:local="clr-namespace:App3.ViewModels"
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}">
+
+
+    <ContentPage.Resources>
+        <local:TestViewModel x:Key="vm"/>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ListView ItemsSource="{Binding Items, Source={StaticResource vm}}" x:Name="listView" ItemSelected="OnItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+      
+                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                        <StackLayout Padding="5,0,0,0" VerticalOptions="EndAndExpand" Orientation="Vertical">
+                            <Label Text="{Binding Name}" VerticalTextAlignment="Center" FontSize="Medium" />
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="8*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding BarWidth}" 
+                                   Grid.Column="0" 
+                                   Grid.Row="0" 
+                                   FontSize="Large" 
+                                   HorizontalOptions="Center" />
+
+                                <progressBar:ProgressBar x:Name="pb" Grid.Column="1" Grid.Row="0"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                                    ProgressBarHeight="40" ProgressBarWidth="{Binding BarWidth}" CornerRadius="0">
+                                    <progressBar:ProgressBar.BarList >
+                                        <progressBar:BarSegment BarWidth2="{Binding iBar1}" BarWidth="{Binding Bar1}" BarColor="Green"/>
+                                        <progressBar:BarSegment BarWidth2="{Binding iBar2}" BarWidth="{Binding Bar2}" BarColor="DarkGray" />
+                                        <progressBar:BarSegment BarWidth2="{Binding iBar3}" BarWidth="{Binding Bar3}" BarColor="Red"/>
+                                    </progressBar:ProgressBar.BarList>
+                                </progressBar:ProgressBar>
+                            </Grid>
+
+                            <Label Text="hint: trigger a context action" VerticalTextAlignment="Center" FontSize="Small" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>

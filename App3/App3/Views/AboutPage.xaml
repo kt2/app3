@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             mc:Ignorable="d"
+             xmlns:progressBar="clr-namespace:ProgressBar"
+             xmlns:tt="clr-namespace:TouchTracking"
+             x:Class="App3.Views.AboutPage"
+             xmlns:vm="clr-namespace:App3.ViewModels"
+             xmlns:local="clr-namespace:App3.Views"
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+  
+    <Grid>
+        <xct:TabView
+                    TabStripPlacement="Top"
+                    TabStripBackgroundColor="Blue"
+                    TabStripHeight="60"
+                    TabIndicatorColor="Yellow"
+                    TabContentBackgroundColor="Yellow">
+            <xct:TabViewItem
+                        Icon="triangle.png"
+                        Text="Tab 1"
+                        TextColor="White"
+                        TextColorSelected="Yellow"
+                        FontSize="12">
+                <Grid BackgroundColor="White"
+              Grid.Row="1">
+
+                    <skia:SKCanvasView x:Name="canvasView"
+                               PaintSurface="OnCanvasViewPaintSurface" />
+                    <Grid.Effects>
+                        <tt:TouchEffect Capture="True"
+                                TouchAction="OnTouchEffectAction" />
+                    </Grid.Effects>
+                </Grid>
+            </xct:TabViewItem>
+            <xct:TabViewItem
+                        Icon="circle.png"
+                        Text="Tab 2"
+                        TextColor="White"
+                        TextColorSelected="Yellow"
+                        FontSize="12">
+
+                <Grid >
+                    <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <StackLayout x:Name="Tab2Stack" Orientation="Vertical" Spacing="0">
+                            <Frame BorderColor="Black" Padding="5">
+                                <progressBar:ProgressBar VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                                  ProgressBarHeight="10" ProgressBarWidth="100" CornerRadius="0">
+                                    <progressBar:ProgressBar.BarList>
+                                        <progressBar:BarSegment BarWidth="10*" BarColor="LightGreen"/>
+                                        <progressBar:BarSegment BarWidth="20*" BarColor="DarkGray"/>
+                                        <progressBar:BarSegment BarWidth="70*" BarColor="Red"/>
+                                    </progressBar:ProgressBar.BarList>
+                                </progressBar:ProgressBar>
+                            </Frame>
+                            <Frame BorderColor="Black" Padding="5">
+                                <progressBar:ProgressBar VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                                  ProgressBarHeight="10" ProgressBarWidth="100" CornerRadius="0">
+                                    <progressBar:ProgressBar.BarList>
+                                        <progressBar:BarSegment BarWidth="10*" BarColor="LightGreen"/>
+                                        <progressBar:BarSegment BarWidth="20*" BarColor="DarkGray"/>
+                                        <progressBar:BarSegment BarWidth="70*" BarColor="Red"/>
+                                    </progressBar:ProgressBar.BarList>
+                                </progressBar:ProgressBar>
+                            </Frame>
+                            <Frame BorderColor="Black" Padding="5">
+                                <progressBar:ProgressBar VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                                  ProgressBarHeight="10" ProgressBarWidth="100" CornerRadius="0">
+                                    <progressBar:ProgressBar.BarList>
+                                        <progressBar:BarSegment BarWidth="10*" BarColor="LightGreen"/>
+                                        <progressBar:BarSegment BarWidth="20*" BarColor="DarkGray"/>
+                                        <progressBar:BarSegment BarWidth="70*" BarColor="Red"/>
+                                    </progressBar:ProgressBar.BarList>
+                                </progressBar:ProgressBar>
+                            </Frame>
+                            <Frame BorderColor="Black" Padding="5">
+                                <progressBar:ProgressBar VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                                  ProgressBarHeight="10" ProgressBarWidth="100" CornerRadius="0">
+                                    <progressBar:ProgressBar.BarList>
+                                        <progressBar:BarSegment BarWidth="10*" BarColor="LightGreen"/>
+                                        <progressBar:BarSegment BarWidth="20*" BarColor="DarkGray"/>
+                                        <progressBar:BarSegment BarWidth="70*" BarColor="Red"/>
+                                    </progressBar:ProgressBar.BarList>
+                                </progressBar:ProgressBar>
+                            </Frame>
+                            <Frame BorderColor="Black" Padding="0">
+                                <progressBar:ProgressBar VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                                  ProgressBarHeight="10" ProgressBarWidth="100" CornerRadius="0">
+                                    <progressBar:ProgressBar.BarList>
+                                        <progressBar:BarSegment BarWidth="10*" BarColor="LightGreen"/>
+                                        <progressBar:BarSegment BarWidth="20*" BarColor="DarkGray"/>
+                                        <progressBar:BarSegment BarWidth="70*" BarColor="Red"/>
+                                    </progressBar:ProgressBar.BarList>
+                                </progressBar:ProgressBar>
+                            </Frame>
+                            <Frame BorderColor="Black" Padding="0">
+                                <skia:SKCanvasView x:Name="Canvas1"  WidthRequest="80" HeightRequest="100"
+                               PaintSurface="OnCanvasViewDrawArrow" />
+                            </Frame>
+
+                            <Frame BorderColor="Black" Padding="0">
+                                <StackLayout Grid.Row="1" Orientation="Horizontal">
+                                    <Label
+                            x:Name="lbCo" 
+                            Text="My Company"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            Style="{DynamicResource LargeLabel}"/>
+                                    <Label
+                             x:Name="lbcopywrite" 
+                             Text="©"
+                             HorizontalTextAlignment="End"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalTextAlignment="Center"
+                             Style="{DynamicResource SmallLabel}"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BorderColor="Black" Padding="0">
+
+                                <progressBar:ProgressBar VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                                  ProgressBarHeight="10" ProgressBarWidth="100" CornerRadius="0">
+                                    <progressBar:ProgressBar.BarList>
+                                        <progressBar:BarSegment BarWidth="10*" BarColor="LightGreen"/>
+                                        <progressBar:BarSegment BarWidth="20*" BarColor="DarkGray"/>
+                                        <progressBar:BarSegment BarWidth="70*" BarColor="Red"/>
+                                    </progressBar:ProgressBar.BarList>
+                                </progressBar:ProgressBar>
+                            </Frame>
+                        </StackLayout>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40*" />
+                            <ColumnDefinition Width="60*" />
+                        </Grid.ColumnDefinitions>
+                        <BoxView Color="AliceBlue" />
+                        <Label Text="Upper left"
+               HorizontalOptions="End"
+               VerticalOptions="End" />
+                    </Grid>
+                </Grid>
+   
+            </xct:TabViewItem>
+        </xct:TabView>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Media\Banana.jpg" />
+    <None Remove="Media\BananaMatte.png" />
+    <None Remove="Media\BrickWallTile.jpg" />
+    <None Remove="Media\FacePalm.jpg" />
+    <None Remove="Media\monkey.png" />
+    <None Remove="Media\MonkeyFace.png" />
+    <None Remove="Media\MountainClimbers.jpg" />
+    <None Remove="Media\Newtons_cradle_animation_book_2.gif" />
+    <None Remove="Media\PageOfCode.png" />
+    <None Remove="Media\SeatedMonkey.jpg" />
+    <None Remove="Media\SeatedMonkeyMatte.png" />
+    <None Remove="Media\StoneWallTile.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Media\Banana.jpg" />
+    <EmbeddedResource Include="Media\BananaMatte.png" />
+    <EmbeddedResource Include="Media\BrickWallTile.jpg" />
+    <EmbeddedResource Include="Media\FacePalm.jpg" />
+    <EmbeddedResource Include="Media\monkey.png" />
+    <EmbeddedResource Include="Media\MonkeyFace.png" />
+    <EmbeddedResource Include="Media\MountainClimbers.jpg" />
+    <EmbeddedResource Include="Media\Newtons_cradle_animation_book_2.gif" />
+    <EmbeddedResource Include="Media\PageOfCode.png" />
+    <EmbeddedResource Include="Media\SeatedMonkey.jpg" />
+    <EmbeddedResource Include="Media\SeatedMonkeyMatte.png" />
+    <EmbeddedResource Include="Media\StoneWallTile.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MultiColor.ProgressBar" Version="1.5.0" />
+    <PackageReference Include="SkiaSharp" Version="2.80.3" />
+    <PackageReference Include="SkiaSharp.Views" Version="2.80.3" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="2.0.1" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />  
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
