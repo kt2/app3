@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -15,9 +16,7 @@ namespace ProgressBar
         private Frame frame;
 
         public static readonly BindableProperty BarListProperty =
-            BindableProperty.Create(nameof(BarList), typeof(ObservableCollection<BarSegment>), typeof(ProgressBar), new ObservableCollection<BarSegment>());
-
-  
+            BindableProperty.Create(nameof(BarList), typeof(ObservableCollection<BarSegment>), typeof(ProgressBar), new TrulyObservableCollection<Label>());
 
         public ObservableCollection<BarSegment> BarList
         {
@@ -28,8 +27,7 @@ namespace ProgressBar
             set
             {
                 SetValue(BarListProperty, value);
-                
-                
+                OnPropertyChanged();
             }
         }
 
@@ -46,6 +44,21 @@ namespace ProgressBar
             set
             {
                 SetValue(ProgressBarWidthProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty BBar1Property =
+    BindableProperty.Create(nameof(BBar1), typeof(int), typeof(ProgressBar), 10);
+
+        public string BBar1
+        {
+            get
+            {
+                return GetValue(BBar1Property).ToString();
+            }
+            set
+            {
+                SetValue(BBar1Property, value);
             }
         }
 
@@ -81,9 +94,6 @@ namespace ProgressBar
 
         public ProgressBar()
         {
-
-           //BindingContext = this;
-
             grid = new Grid
             {
                 RowDefinitions =
@@ -119,10 +129,16 @@ namespace ProgressBar
             var index = e.NewStartingIndex;
             var item = BarList[index];
 
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = item.BarWidth });
-            var boxView = new BoxView
+            //SetInheritedBindingContext(item, this.BindingContext);
+
+            //item.SetBinding(Label.TextProperty, new Binding("BarWidth"));
+
+
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(33, GridUnitType.Star) });
+           // grid.Children.Add(item, index, 0);
+            var boxView = new Label
             {
-                BackgroundColor = item.BarColor,
+                Text = "test",
             };
 
             grid.Children.Add(boxView, index, 0);
@@ -135,7 +151,7 @@ namespace ProgressBar
 
             if (propertyName == BarListProperty.PropertyName)
             {
-                
+                var a = BarList;
             }
             else if (propertyName == ProgressBarWidthProperty.PropertyName)
             {

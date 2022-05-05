@@ -10,25 +10,15 @@ namespace ProgressBar
 {
     public partial class BarSegment : ContentView
     {
-
-        public static readonly BindableProperty BarWidth2Property =
-       BindableProperty.Create(nameof(BarWidth2), typeof(int), typeof(BarSegment), 20);
-
-        public int BarWidth2
+        public BarSegment()
         {
-            get
-            {
-                return (int)GetValue(BarWidth2Property);
-            }
-            set
-            {
-                SetValue(BarWidth2Property, value);
-            }
+         
+
         }
 
 
         public static readonly BindableProperty BarWidthProperty =
-            BindableProperty.Create(nameof(BarWidth), typeof(GridLength), typeof(BarSegment), new GridLength(40, GridUnitType.Star));
+            BindableProperty.Create(nameof(BarWidth), typeof(GridLength), typeof(BarSegment), new GridLength(40, GridUnitType.Star), BindingMode.TwoWay, propertyChanged: BarWidthPropertyChanged);
 
         public GridLength BarWidth
         {
@@ -39,7 +29,14 @@ namespace ProgressBar
             set
             {
                 SetValue(BarWidthProperty, value);
+                OnPropertyChanged();
             }
+        }
+
+ 
+        private static void BarWidthPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (BarSegment)bindable;
         }
 
         public static readonly BindableProperty BarColorProperty =
@@ -56,7 +53,7 @@ namespace ProgressBar
                 SetValue(BarColorProperty, value);
             }
         }
-  
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
@@ -66,10 +63,6 @@ namespace ProgressBar
                 var breakpoint = 1;
             }
 
-            if (propertyName == BarWidth2Property.PropertyName)
-            {
-                var breakpoint2 = 1;
-            }
 
         }
 

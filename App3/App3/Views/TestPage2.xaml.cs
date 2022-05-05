@@ -4,7 +4,6 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
-
 using TouchTracking;
 using System.Reflection;
 using System.IO;
@@ -13,21 +12,7 @@ using Xamarin.Forms.Xaml;
 
 namespace App3.Views
 {
-    public class Monkey
-    {
-        public string Name { get; set; }
-        public string Bar1 { get; set; }
-        public string Bar2 { get; set; }
-        public string Bar3 { get; set; }
-        public string iBar1 { get; set; }
-        public string iBar2 { get; set; }
-        public string iBar3 { get; set; }
-        public string BarWidth { get; set; }
-        public string BColor { get; set; }
-    }
-
-
-    public partial class TestPage : ContentPage
+    public partial class TestPage2 : ContentPage
     {
         private ObservableCollection<Monkey> items;
 
@@ -41,51 +26,14 @@ namespace App3.Views
                 OnPropertyChanged();
             }
         }
-        public TestPage()
+        public TestPage2()
         {
             
             //listView.ItemsSource = items;
             //listView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
           
-
-            Items = new ObservableCollection<Monkey>();
-            Items.Add(new Monkey
-            {
-                Name = "test",
-                Bar1 = "50*",
-                Bar2 = "40*",
-                Bar3 = "10*",
-                iBar1 = "1",
-                iBar2 = "2",
-                iBar3 = "3",
-                BarWidth = "400",
-                BColor = "Black"
-            });
-            Items.Add(new Monkey
-            {
-                Name = "tes4t",
-                Bar1 = "50*",
-                Bar2 = "40*",
-                Bar3 = "10*",
-                iBar1 = "1",
-                iBar2 = "2",
-                iBar3 = "3",
-                BarWidth = "400",
-                BColor = "Black"
-            });
-            Items.Add(new Monkey
-            {
-                Name = "tuuest",
-                Bar1 = "50*",
-                Bar2 = "40*",
-                Bar3 = "10*",
-                iBar1 = "1",
-                iBar2 = "2",
-                iBar3 = "3",
-                BarWidth = "400",
-                BColor = "Red"
-            });
             InitializeComponent();
+
             //var b = new ProgressBar.ProgressBar
             //{
             //    VerticalOptions = LayoutOptions.CenterAndExpand,

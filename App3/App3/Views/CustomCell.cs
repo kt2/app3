@@ -49,37 +49,37 @@ namespace App3.Views
             };
    
 
-            var bar2 = new ProgressBar.BarSegment
-            {
-                BarColor = Color.DarkGray,
-            };
+            //var bar2 = new ProgressBar.BarSegment
+            //{
+            //    BarColor = Color.DarkGray,
+            //};
         
-            var bar3 = new ProgressBar.BarSegment
-            {
-                BarColor = Color.Red,
-            };
+            //var bar3 = new ProgressBar.BarSegment
+            //{
+            //    BarColor = Color.Red,
+            //};
 
       
 
-            var bp = new ProgressBar.ProgressBar
-            {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.Center,
-                ProgressBarHeight = 10,
-                ProgressBarWidth = 100,
-                CornerRadius = 0,
-                BarList =
-                {
-                    bar1,
-                    bar2,
-                    bar3
-                }
+            //var bp = new ProgressBar.ProgressBar
+            //{
+            //    VerticalOptions = LayoutOptions.CenterAndExpand,
+            //    HorizontalOptions = LayoutOptions.Center,
+            //    ProgressBarHeight = 10,
+            //    ProgressBarWidth = 100,
+            //    CornerRadius = 0,
+            //    BarList =
+            //    {
+            //        bar1,
+            //        bar2,
+            //        bar3
+            //    }
 
-            };
+            //};
 
-            bar1.SetBinding(BarSegment.BarWidthProperty, new Binding("Bar1"));
-            bar2.SetBinding(BarSegment.BarWidthProperty, new Binding("Bar2"));
-            bar3.SetBinding(BarSegment.BarWidthProperty, new Binding("Bar3"));
+            //bar1.SetBinding(BarSegment.BarWidthProperty, new Binding("Bar1"));
+            //bar2.SetBinding(BarSegment.BarWidthProperty, new Binding("Bar2"));
+            //bar3.SetBinding(BarSegment.BarWidthProperty, new Binding("Bar3"));
      
 
 
@@ -93,7 +93,7 @@ namespace App3.Views
                         Orientation = StackOrientation.Vertical,
                         Children = { label1, label2 }
                     },
-                    bp
+                   // bp
                 }
             };
         }

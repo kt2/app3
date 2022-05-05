@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             mc:Ignorable="d"
+          
+             xmlns:tt="clr-namespace:TouchTracking"
+             x:Class="App3.Views.TestPage2"
+             xmlns:vm="clr-namespace:App3.ViewModels"
+             xmlns:local="clr-namespace:App3.ViewModels"
+             Shell.NavBarIsVisible="False"
+             Title="1234">
+
+
+    <ContentPage.Resources>
+        <local:Test2ViewModel x:Key="vm"/>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <DataTemplate x:Key="normal">
+                <ViewCell>
+                    <Grid ColumnSpacing="0" Padding="0" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame Grid.Row="0" Grid.Column="0" Padding="0" IsClippedToBounds="True" CornerRadius="0" WidthRequest="20" HeightRequest="40" HasShadow="False"
+                                   HorizontalOptions="Start" BorderColor="Transparent">
+                            <Label VerticalTextAlignment="Center" Text="{ Binding Label }" />
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Padding="0" IsClippedToBounds="True" CornerRadius="0" 
+                               HorizontalOptions="FillAndExpand" HasShadow="False" BorderColor="Black">
+                            <Grid ColumnSpacing="0" Padding="0" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{ Binding Bar1 }" />
+                                    <ColumnDefinition Width="{ Binding Bar2 }" />
+                                    <ColumnDefinition Width="{ Binding Bar3 }" />
+                                </Grid.ColumnDefinitions>
+                                <BoxView Grid.Column="0" Grid.Row="0" Color="Beige"></BoxView>
+                                <BoxView Grid.Column="1" Grid.Row="0" Color="Red"></BoxView>
+                                <BoxView Grid.Column="2" Grid.Row="0" Color="Yellow"></BoxView>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="current">
+                <ViewCell>
+                    <Grid ColumnSpacing="0" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.Row="0" Grid.Column="0" Padding="0" IsClippedToBounds="True" CornerRadius="0" HasShadow="False"
+                                   HorizontalOptions="Start" BorderColor="Transparent" VerticalOptions="FillAndExpand">
+                           
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" Padding="0" IsClippedToBounds="True" CornerRadius="0" 
+                               HorizontalOptions="FillAndExpand" HasShadow="False" BorderColor="Black" VerticalOptions="FillAndExpand">
+                            <Grid RowSpacing="0" ColumnSpacing="0" Padding="0" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="50*" />
+                                </Grid.ColumnDefinitions>
+                                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="End" Grid.Column="0" Text="{ Binding Knew, StringFormat='Knew {0}' }" />
+                                <Label HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Column="1" Text="{ Binding ToLearn, StringFormat='{0} to learn' }" />
+                            </Grid>
+                        </Frame>
+
+
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="0" IsClippedToBounds="True" CornerRadius="0" WidthRequest="20" HeightRequest="40" HasShadow="False"
+                                   HorizontalOptions="Start" BorderColor="Transparent" VerticalOptions="FillAndExpand">
+                            <Label VerticalTextAlignment="Center" Text="{ Binding Label }" />
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="0" IsClippedToBounds="True" CornerRadius="0" 
+                               HorizontalOptions="FillAndExpand" HasShadow="True" BorderColor="Transparent" VerticalOptions="FillAndExpand">
+                            <Grid ColumnSpacing="0" Padding="0" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" /> 
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{ Binding Bar1 }" />
+                                    <ColumnDefinition Width="{ Binding Bar2 }" />
+                                    <ColumnDefinition Width="{ Binding Bar3 }" />
+                                </Grid.ColumnDefinitions>
+                                <BoxView Grid.Column="0" Grid.Row="0" Color="Black"></BoxView>
+                                <BoxView Grid.Column="1" Grid.Row="0" Color="WhiteSmoke"></BoxView>
+                                <BoxView Grid.Column="2" Grid.Row="0" Color="Yellow"></BoxView>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <local:ProgressSelector x:Key="progressSelector" NormalTemplate="{StaticResource normal}" CurrentTemplate="{StaticResource current}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid ColumnSpacing="0" Padding="0" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="icon_feed.png" Grid.Column="0" Grid.Row="0"/>
+                <Grid Grid.Column="1" Grid.Row="0" ColumnSpacing="0" Padding="5" HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*" />
+                        <ColumnDefinition Width="33*" />
+                        <ColumnDefinition Width="33*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.ColumnSpan="3" Text="Estimated total knowledge" />
+                    <Label Grid.Row="1" Grid.ColumnSpan="3" Text="3,785 words" />
+                    <Button Grid.Row="2" Grid.Column="0" CornerRadius="15" Text="266 Knew" HeightRequest="55" TextTransform="None"/>
+                    <Button Grid.Row="2" Grid.Column="1" CornerRadius="15" Text="430 Learning" TextTransform="None" />
+                    <Button Grid.Row="2" Grid.Column="2" CornerRadius="15" Text="266 &#x0a;To learn" TextTransform="None" />
+                </Grid>
+            </Grid>
+            <xct:TabView
+                    TabStripPlacement="Top"
+                    TabStripBackgroundColor="Blue"
+                    TabStripHeight="60"
+                    TabIndicatorColor="Yellow"
+                    TabContentBackgroundColor="Yellow">
+                <xct:TabViewItem
+                        Icon="triangle.png"
+                        Text="Tab 1"
+                        TextColor="White"
+                        TextColorSelected="Yellow"
+                        FontSize="12">
+                    <ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Items, Source={StaticResource vm}}" VerticalOptions="FillAndExpand"
+                  HasUnevenRows="true" x:Name="listView" ItemSelected="OnItemSelected" ItemTemplate="{StaticResource progressSelector}">
+                    </ListView>
+                </xct:TabViewItem>
+                <xct:TabViewItem
+                        Icon="circle.png"
+                        Text="Progress"
+                        TextColor="White"
+                        TextColorSelected="Yellow"
+                        FontSize="12">
+                    <Label Text="placeholder" />
+                </xct:TabViewItem>
+            </xct:TabView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

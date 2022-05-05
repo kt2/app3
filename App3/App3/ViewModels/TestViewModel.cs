@@ -5,20 +5,22 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using ProgressBar;
 
+public class Monkey
+{
+    public string Label { get; set; }
+    public GridLength Bar1 { get; set; }
+    public GridLength Bar2 { get; set; }
+    public GridLength Bar3 { get; set; }
+    public bool Discovering { get; set; }
+    public int Knew { get; set; }
+    public int ToLearn { get; set; }
+    public int Uncover { get; set; }
+
+}
+
 namespace App3.ViewModels
 {
-    public class Monkey
-    {
-        public string Name { get; set; }
-        public string Bar1 { get; set; }
-        public string Bar2 { get; set; }
-        public string Bar3 { get; set; }
-        public int iBar1 { get; set; }
-        public int iBar2 { get; set; }
-        public int iBar3 { get; set; }
-        public string BarWidth { get; set; }
-        public string BColor { get; set; }
-    }
+
     public class TestViewModel : BaseViewModel
     {
         private ObservableCollection<Monkey> items;
@@ -30,7 +32,7 @@ namespace App3.ViewModels
             set
             {
                 items = value;
-                OnPropertyChanged();
+             //   OnPropertyChanged();
             }
         }
 
@@ -42,39 +44,20 @@ namespace App3.ViewModels
             Items = new ObservableCollection<Monkey>();
             Items.Add(new Monkey
             {
-                Name = "test",
-                Bar1 = "50*",
-                Bar2 = "40*",
-                Bar3 = "10*",
-                iBar1 = 1,
-                iBar2 = 2,
-                iBar3 = 3,
-                BarWidth = "400",
-                BColor = "Black"
+                Label = "1K",
+        
+       
             });
             Items.Add(new Monkey
             {
-                Name = "tes4t",
-                Bar1 = "50*",
-                Bar2 = "40*",
-                Bar3 = "10*",
-                iBar1 = 1,
-                iBar2 = 2,
-                iBar3 = 3,
-                BarWidth = "400",
-                BColor = "Black"
+                Label = "2K",
+
             });
             Items.Add(new Monkey
             {
-                Name = "tuuest",
-                Bar1 = "50*",
-                Bar2 = "40*",
-                Bar3 = "10*",
-                iBar1 = 1,
-                iBar2 = 2,
-                iBar3 = 3,
-                BarWidth = "400",
-                BColor = "Red"
+                Label = "3K",
+      
+        
             });
         }
 
